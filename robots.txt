@@ -1,0 +1,36 @@
+# robots.txt for foxerw's Blog
+# https://yourdomain.com
+
+User-agent: *
+Allow: /
+
+# 允许所有搜索引擎抓取
+Allow: /*.html$
+Allow: /*.css$
+Allow: /*.js$
+Allow: /images/
+Allow: /data/
+
+# 不允许抓取 Markdown 源文件
+Disallow: /posts/*.md
+
+# 网站地图
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# 通用规则
+Crawl-delay: 1
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# 百度
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
