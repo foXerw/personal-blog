@@ -1,0 +1,378 @@
+/**
+ * Base Styles - 基础样式重置和排版
+ * 基于现代 CSS Reset 和排版最佳实践
+ */
+
+/* ============================================
+ * CSS Reset - 现代化重置
+ * ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  line-height: var(--leading-relaxed);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  overflow-x: hidden;
+}
+
+/* 图片 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 链接 */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* 按钮 */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* 输入元素 */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 列表 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 引用 */
+blockquote {
+  margin: var(--spacing-6) 0;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-left: 4px solid var(--color-accent);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* 代码 */
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  line-height: var(--leading-normal);
+}
+
+code {
+  padding: 0.2em 0.4em;
+  background-color: var(--color-code-bg);
+  border-radius: var(--radius-sm);
+  color: var(--color-code-text);
+}
+
+pre {
+  padding: var(--spacing-4);
+  overflow-x: auto;
+  background-color: var(--color-code-bg);
+  border-radius: var(--radius-md);
+  color: var(--color-code-text);
+}
+
+pre code {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+/* 表格 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-6) 0;
+}
+
+th,
+td {
+  padding: var(--spacing-3) var(--spacing-4);
+  text-align: left;
+  border: 1px solid var(--color-border);
+}
+
+th {
+  font-weight: var(--font-semibold);
+  background-color: var(--color-bg-secondary);
+}
+
+tr:nth-child(even) {
+  background-color: var(--color-bg-secondary);
+}
+
+/* 水平线 */
+hr {
+  margin: var(--spacing-8) 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* 选中文本 */
+::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+/* ============================================
+ * 排版样式
+ * ============================================ */
+
+/* 标题 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-4);
+}
+
+h1 {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+}
+
+h3 {
+  font-size: var(--text-3xl);
+}
+
+h4 {
+  font-size: var(--text-2xl);
+}
+
+h5 {
+  font-size: var(--text-xl);
+}
+
+h6 {
+  font-size: var(--text-lg);
+}
+
+/* 段落 */
+p {
+  margin-bottom: var(--spacing-4);
+  line-height: var(--leading-relaxed);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* 文章正文排版 */
+.prose {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.prose p {
+  margin-bottom: var(--spacing-6);
+}
+
+.prose h2 {
+  margin-top: var(--spacing-12);
+  margin-bottom: var(--spacing-6);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prose h3 {
+  margin-top: var(--spacing-10);
+  margin-bottom: var(--spacing-4);
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+  margin-top: var(--spacing-8);
+  margin-bottom: var(--spacing-3);
+}
+
+.prose ul,
+.prose ol {
+  margin: var(--spacing-6) 0;
+  padding-left: var(--spacing-6);
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose li {
+  margin-bottom: var(--spacing-2);
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: var(--spacing-2);
+  margin-bottom: 0;
+}
+
+.prose img {
+  margin: var(--spacing-8) auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.prose figure {
+  margin: var(--spacing-8) 0;
+}
+
+.prose figcaption {
+  margin-top: var(--spacing-3);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--color-accent-hover);
+}
+
+.prose strong {
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose mark {
+  padding: 0.1em 0.2em;
+  background-color: var(--color-accent-light);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+ * 滚动条样式
+ * ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-tertiary);
+}
+
+/* Firefox 滚动条 */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) var(--color-bg-secondary);
+}
+
+/* ============================================
+ * 焦点样式 - 可访问性
+ * ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================
+ * 工具类
+ * ============================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-normal { font-weight: var(--font-normal); }
+.font-medium { font-weight: var(--font-medium); }
+.font-semibold { font-weight: var(--font-semibold); }
+.font-bold { font-weight: var(--font-bold); }

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- SEO Meta -->
+  <title>foxerw 的博客 | 记录技术与生活</title>
+  <meta name="description" content="一个专注于技术分享与生活感悟的个人博客">
+  <meta name="keywords" content="博客，技术，生活，编程，Web 开发">
+  <meta name="author" content="foxerw">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="foxerw 的博客">
+  <meta property="og:description" content="一个专注于技术分享与生活感悟的个人博客">
+  <meta property="og:url" content="https://yourdomain.com">
+  <meta property="og:site_name" content="foxerw 的博客">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="foxerw 的博客">
+  <meta name="twitter:description" content="一个专注于技术分享与生活感悟的个人博客">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Preload -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <header class="navbar" role="banner">
+    <div class="navbar-content">
+      <a href="index.html" class="navbar-brand" aria-label="返回首页">
+        <img src="images/logo.svg" alt="Logo" class="navbar-logo" width="36" height="36" onerror="this.style.display='none'">
+        <span>foxerw 的博客</span>
+      </a>
+      
+      <nav class="navbar-menu" role="navigation" aria-label="主导航">
+        <a href="index.html" class="navbar-link active" aria-current="page">首页</a>
+        <a href="archive.html" class="navbar-link">归档</a>
+        <a href="categories.html" class="navbar-link">分类</a>
+        <a href="tags.html" class="navbar-link">标签</a>
+        <a href="about.html" class="navbar-link">关于</a>
+        
+        <!-- 主题切换按钮 -->
+        <button class="theme-toggle" aria-label="切换主题" title="点击切换主题">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+          <span class="icon-auto" aria-hidden="true">🔄</span>
+        </button>
+      </nav>
+      
+      <!-- 汉堡菜单按钮 -->
+      <button class="hamburger" aria-label="菜单" aria-expanded="false" aria-controls="navbar-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+  
+  <!-- 主内容区 -->
+  <main class="page-wrapper">
+    <!-- Hero 区域 -->
+    <section class="hero container">
+      <img src="images/avatar.jpg" alt="头像" class="hero-avatar" width="120" height="120" onerror="this.style.display='none'">
+      <h1 class="hero-title">你好，我是 foxerw 👋</h1>
+      <p class="hero-subtitle">
+        一名热爱技术的开发者，在这里记录学习心得、技术探索和生活感悟。
+        相信分享让知识更有价值。
+      </p>
+    </section>
+    
+    <!-- 内容区域 -->
+    <div class="container">
+      <div class="main-content">
+        <!-- 文章列表 -->
+        <div class="content-area">
+          <section class="articles-section">
+            <h2 class="section-title" style="margin-bottom: var(--spacing-6); font-size: var(--text-2xl);">最新文章</h2>
+            
+            <div class="articles-list" id="articles-list">
+              <!-- 文章卡片示例 1 -->
+              <article class="article-card featured">
+                <div class="article-card-content">
+                  <h3 class="article-card-title">
+                    <a href="post.html?slug=hello-world">你好，世界！我的博客正式上线了</a>
+                  </h3>
+                  <div class="article-card-meta">
+                    <time datetime="2024-03-07">2024 年 3 月 7 日</time>
+                    <span>·</span>
+                    <span>5 分钟阅读</span>
+                  </div>
+                  <p class="article-card-excerpt">
+                    经过一段时间的筹备，我的个人博客终于上线了！在这里，我想分享一下搭建博客的心路历程，以及未来的规划...
+                  </p>
+                  <div class="article-card-footer">
+                    <div class="article-card-tags">
+                      <a href="tags.html?tag=生活" class="tag">生活</a>
+                      <a href="tags.html?tag=博客" class="tag">博客</a>
+                    </div>
+                    <a href="post.html?slug=hello-world" class="tag" style="background: transparent; border: 1px solid var(--color-accent);">阅读全文 →</a>
+                  </div>
+                </div>
+              </article>
+              
+              <!-- 文章卡片示例 2 -->
+              <article class="article-card">
+                <div class="article-card-content">
+                  <h3 class="article-card-title">
+                    <a href="post.html?slug=css-variables-guide">CSS 变量完全指南：构建灵活的设计系统</a>
+                  </h3>
+                  <div class="article-card-meta">
+                    <time datetime="2024-03-06">2024 年 3 月 6 日</time>
+                    <span>·</span>
+                    <span>8 分钟阅读</span>
+                  </div>
+                  <p class="article-card-excerpt">
+                    CSS 变量（自定义属性）是现代 CSS 开发中的强大工具。本文将深入探讨如何使用 CSS 变量构建灵活、可维护的设计系统...
+                  </p>
+                  <div class="article-card-footer">
+                    <div class="article-card-tags">
+                      <a href="tags.html?tag=CSS" class="tag">CSS</a>
+                      <a href="tags.html?tag=前端" class="tag">前端</a>
+                    </div>
+                    <a href="post.html?slug=css-variables-guide" class="tag" style="background: transparent; border: 1px solid var(--color-accent);">阅读全文 →</a>
+                  </div>
+                </div>
+              </article>
+              
+              <!-- 文章卡片示例 3 -->
+              <article class="article-card">
+                <div class="article-card-content">
+                  <h3 class="article-card-title">
+                    <a href="post.html?slug=javascript-async-await">深入理解 JavaScript Async/Await</a>
+                  </h3>
+                  <div class="article-card-meta">
+                    <time datetime="2024-03-05">2024 年 3 月 5 日</time>
+                    <span>·</span>
+                    <span>10 分钟阅读</span>
+                  </div>
+                  <p class="article-card-excerpt">
+                    Async/Await 让异步代码看起来像同步代码一样简洁。但你是否真正理解它的工作原理？让我们深入探索...
+                  </p>
+                  <div class="article-card-footer">
+                    <div class="article-card-tags">
+                      <a href="tags.html?tag=JavaScript" class="tag">JavaScript</a>
+                      <a href="tags.html?tag=异步" class="tag">异步</a>
+                    </div>
+                    <a href="post.html?slug=javascript-async-await" class="tag" style="background: transparent; border: 1px solid var(--color-accent);">阅读全文 →</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            
+            <!-- 分页 -->
+            <nav class="pagination" aria-label="分页导航">
+              <a href="#" class="pagination-link disabled" aria-disabled="true">← 上一页</a>
+              <a href="#" class="pagination-link active" aria-current="page">1</a>
+              <a href="#" class="pagination-link">2</a>
+              <a href="#" class="pagination-link">3</a>
+              <a href="#" class="pagination-link">下一页 →</a>
+            </nav>
+          </section>
+        </div>
+        
+        <!-- 侧边栏 -->
+        <aside class="sidebar" role="complementary">
+          <!-- 关于我 -->
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">关于我</h3>
+            <p style="font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed);">
+              热爱编程，喜欢探索新技术。专注于 Web 开发和用户体验设计。
+            </p>
+            <a href="about.html" class="tag" style="margin-top: var(--spacing-4); display: inline-block;">了解更多 →</a>
+          </div>
+          
+          <!-- 分类 -->
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">分类</h3>
+            <ul style="font-size: var(--text-sm);">
+              <li style="margin-bottom: var(--spacing-2); display: flex; justify-content: space-between;">
+                <a href="categories.html?category=技术" style="color: var(--color-text-secondary);">技术</a>
+                <span style="color: var(--color-text-muted);">12</span>
+              </li>
+              <li style="margin-bottom: var(--spacing-2); display: flex; justify-content: space-between;">
+                <a href="categories.html?category=生活" style="color: var(--color-text-secondary);">生活</a>
+                <span style="color: var(--color-text-muted);">8</span>
+              </li>
+              <li style="margin-bottom: var(--spacing-2); display: flex; justify-content: space-between;">
+                <a href="categories.html?category=随笔" style="color: var(--color-text-secondary);">随笔</a>
+                <span style="color: var(--color-text-muted);">5</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- 标签云 -->
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">标签云</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-2);">
+              <a href="tags.html?tag=JavaScript" class="tag">JavaScript</a>
+              <a href="tags.html?tag=CSS" class="tag">CSS</a>
+              <a href="tags.html?tag=前端" class="tag">前端</a>
+              <a href="tags.html?tag=React" class="tag">React</a>
+              <a href="tags.html?tag=Node.js" class="tag">Node.js</a>
+              <a href="tags.html?tag=生活" class="tag">生活</a>
+              <a href="tags.html?tag=随笔" class="tag">随笔</a>
+            </div>
+          </div>
+          
+          <!-- 社交链接 -->
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">关注我</h3>
+            <div class="social-links">
+              <a href="https://github.com/foxerw" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </a>
+              <a href="https://twitter.com/foxerw" class="social-link" aria-label="Twitter" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+              </a>
+              <a href="mailto:foxerw@example.com" class="social-link" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
+              <a href="feed.xml" class="social-link" aria-label="RSS 订阅">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 11a9 9 0 0 1 9 9"></path>
+                  <path d="M4 4a16 16 0 0 1 16 16"></path>
+                  <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+  
+  <!-- 页脚 -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-text">
+          © 2024 foxerw 的博客。All rights reserved.
+        </p>
+        <div class="footer-links">
+          <a href="about.html" class="footer-link">关于</a>
+          <a href="feed.xml" class="footer-link">RSS</a>
+          <a href="sitemap.xml" class="footer-link">站点地图</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

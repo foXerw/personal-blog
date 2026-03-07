@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "slug": "hello-world",
+      "title": "你好，世界！我的博客正式上线了",
+      "date": "2024-03-07",
+      "updated": "2024-03-07",
+      "categories": ["生活"],
+      "tags": ["博客", "生活"],
+      "excerpt": "经过一段时间的筹备，我的个人博客终于上线了！在这里，我想分享一下搭建博客的心路历程，以及未来的规划...",
+      "cover": "images/posts/hello-world.jpg",
+      "featured": true,
+      "draft": false,
+      "readingTime": 5
+    }
+  ],
+  "categories": [
+    {
+      "name": "生活",
+      "count": 1
+    }
+  ],
+  "tags": [
+    {
+      "name": "博客",
+      "count": 1
+    },
+    {
+      "name": "生活",
+      "count": 1
+    }
+  ],
+  "generatedAt": "2024-03-07T00:00:00.000Z"
+}
