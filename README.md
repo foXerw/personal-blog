@@ -14,13 +14,13 @@
 ### ✨ 核心特性
 
 - 🎨 **极简设计** - 留白充足，排版精美，艺术感十足
-- 🌓 **主题切换** - 支持深色/浅色主题，自动检测系统偏好
+- 🌓 **主题切换** - 支持深色/浅色主题，一键切换
 - 📱 **响应式** - 完美适配手机、平板、桌面设备
 - ⚡ **高性能** - 纯静态页面，加载迅速
 - 🔍 **本地搜索** - 基于 Fuse.js 的全文搜索
-- ♿ **无障碍** - 符合 WCAG 标准，支持键盘导航
 - 📝 **Markdown** - 使用 Markdown 编写文章
 - 🎯 **SEO 优化** - 语义化 HTML，完整的 Meta 标签
+- 🇨🇳 **国内加速** - 使用七牛云 CDN，国内访问飞快
 
 ---
 
@@ -29,9 +29,8 @@
 ### 本地预览
 
 ```bash
-# 克隆项目
-git clone <repository-url>
-cd personal-blog
+# 进入项目目录
+cd ~/Projects/personal-blog
 
 # 使用 Python 启动本地服务器
 python3 -m http.server 8080
@@ -44,24 +43,31 @@ npx http-server -p 8080
 
 ### 部署
 
-#### GitHub Pages
+#### GitHub Pages（推荐）
 
-1. 将代码推送到 GitHub 仓库
-2. 在仓库设置中启用 GitHub Pages
-3. 选择 `main` 分支作为源
-4. 访问 `https://yourusername.github.io/personal-blog`
+```bash
+# 推送到 GitHub
+git remote add origin <your-repo-url>
+git push -u origin main
+
+# 在 GitHub 仓库设置中启用 GitHub Pages
+# 选择 main 分支作为源
+```
+
+访问：`https://yourusername.github.io/personal-blog`
 
 #### Vercel / Netlify
 
-直接连接 GitHub 仓库，自动部署。
+1. 连接 GitHub 仓库
+2. 自动部署，无需配置
 
 #### 传统服务器
 
 ```bash
-# 将文件上传到服务器
+# 上传文件
 scp -r ./* user@server:/var/www/html/
 
-# 配置 Nginx
+# Nginx 配置
 server {
     listen 80;
     server_name yourdomain.com;
@@ -77,7 +83,7 @@ server {
 ```
 personal-blog/
 ├── index.html              # 首页
-├── post.html               # 文章详情页模板
+├── post.html               # 文章详情页
 ├── archive.html            # 归档页
 ├── categories.html         # 分类页
 ├── tags.html               # 标签页
@@ -86,97 +92,103 @@ personal-blog/
 ├── 404.html                # 404 页面
 │
 ├── css/
-│   ├── variables.css       # CSS 变量（主题色、间距等）
-│   ├── base.css            # 基础样式（重置、排版）
+│   ├── variables.css       # CSS 变量（主题色）
+│   ├── base.css            # 基础样式
 │   ├── layout.css          # 布局样式
 │   ├── themes.css          # 主题样式
-│   └── style.css           # 主入口（导入所有）
+│   └── style.css           # 主入口
 │
 ├── js/
 │   ├── main.js             # 主入口
 │   ├── theme.js            # 主题切换
 │   ├── navigation.js       # 导航交互
-│   ├── search.js           # 搜索功能
-│   ├── toc.js              # 目录生成
-│   ├── utils.js            # 工具函数
+│   ├── pagination.js       # 分页功能
 │   ├── post.js             # 文章加载
-│   ├── archive.js          # 归档页逻辑
-│   ├── categories.js       # 分类页逻辑
-│   ├── tags.js             # 标签页逻辑
-│   └── search-page.js      # 搜索页逻辑
+│   ├── toc.js              # 目录生成
+│   ├── search.js           # 搜索功能
+│   └── utils.js            # 工具函数
 │
-├── posts/                  # 博客文章（Markdown 格式）
+├── posts/                  # 博客文章（Markdown）
 │   ├── _template.md        # 文章模板
-│   └── 2024-03-07-hello-world.md
+│   ├── welcome.md          # 示例文章
+│   ├── minimalism.md       # 示例文章
+│   └── frontend-art.md     # 示例文章
 │
 ├── data/
 │   └── posts.json          # 文章索引
 │
 ├── images/                 # 图片资源
-│   ├── logo.svg
-│   └── avatar.jpg
-│
 ├── sitemap.xml             # 站点地图
 ├── robots.txt              # 爬虫协议
-├── .gitignore
+├── 如何发布文章.md          # 📝 发布指南
 └── README.md               # 项目文档
 ```
 
 ---
 
-## ✍️ 添加文章
+## ✍️ 发布文章
 
-### 1. 创建 Markdown 文件
+### 简单三步
 
-在 `posts/` 目录下创建新文件，命名格式：`YYYY-MM-DD-slug.md`
+**1. 创建 Markdown 文件**
+
+```bash
+# 在 posts/ 目录创建文章
+touch posts/your-article.md
+```
 
 ```markdown
 ---
 title: 文章标题
-date: 2024-03-07
-updated: 2024-03-07
-categories: [技术，生活]
-tags: [JavaScript, Web]
-cover: images/posts/cover.jpg
+date: 2026-03-08
+categories: [技术]
+tags: [标签 1, 标签 2]
 draft: false
-featured: true
-description: 文章描述（用于 SEO）
+featured: false
+description: 文章简介
 ---
 
-这里是文章正文...
+## 正文开始
+
+你的内容...
 ```
 
-### 2. 更新文章索引
+**2. 更新文章索引**
 
-编辑 `data/posts.json`，添加新文章信息：
+编辑 `data/posts.json`，添加：
 
 ```json
 {
-  "posts": [
-    {
-      "slug": "your-article-slug",
-      "title": "文章标题",
-      "date": "2024-03-07",
-      "updated": "2024-03-07",
-      "categories": ["技术"],
-      "tags": ["JavaScript"],
-      "excerpt": "文章摘要...",
-      "cover": "images/posts/cover.jpg",
-      "featured": false,
-      "draft": false,
-      "readingTime": 5
-    }
-  ]
+  "slug": "your-article",
+  "title": "文章标题",
+  "date": "2026-03-08",
+  "categories": ["技术"],
+  "tags": ["标签 1"],
+  "excerpt": "摘要...",
+  "featured": false,
+  "readingTime": 5
 }
 ```
 
-### 3. 添加配图（可选）
+**3. 刷新预览**
 
-将文章封面图放入 `images/posts/` 目录。
+浏览器访问 `http://localhost:8080`，按 `Cmd+Shift+R` 刷新
 
 ---
 
-## 🎨 自定义指南
+### 📝 详细指南
+
+查看 **`如何发布文章.md`** 获取完整教程，包含：
+
+- 完整的文章模板
+- JSON 配置详解
+- 分类标签管理
+- 配图指南
+- 常见问题
+
+---
+
+## 🎨 自定义
 
 ### 修改主题色
 
@@ -185,8 +197,11 @@ description: 文章描述（用于 SEO）
 ```css
 :root {
   --color-accent: #667eea;        /* 强调色 */
-  --color-accent-hover: #5a67d8;  /* 强调色悬停 */
-  --color-accent-light: #ebf4ff;  /* 强调色浅色 */
+  --color-accent-hover: #5a67d8;  /* 悬停色 */
+}
+
+[data-theme="dark"] {
+  --color-accent: #90a4e8;        /* 深色主题强调色 */
 }
 ```
 
@@ -195,15 +210,11 @@ description: 文章描述（用于 SEO）
 - **头像**: 替换 `images/avatar.jpg`
 - **Logo**: 替换 `images/logo.svg`
 - **关于页**: 编辑 `about.html`
-- **社交链接**: 在 `index.html` 和 `about.html` 中修改
-
-### 修改导航菜单
-
-编辑所有 HTML 文件中的 `<nav class="navbar-menu">` 部分。
+- **社交链接**: 修改 `index.html` 中的链接
 
 ### 添加新页面
 
-1. 复制现有页面作为模板
+1. 复制现有页面（如 `about.html`）
 2. 修改内容和标题
 3. 在导航栏添加链接
 
@@ -211,58 +222,31 @@ description: 文章描述（用于 SEO）
 
 ## 🛠️ 技术栈
 
-- **HTML5** - 语义化标记
-- **CSS3** - 现代样式系统（CSS 变量、Flexbox、Grid）
-- **JavaScript (ES6+)** - 原生 JavaScript，无框架依赖
-- **Marked.js** - Markdown 渲染
-- **Highlight.js** - 代码高亮
-- **Fuse.js** - 全文搜索
+| 类型 | 技术 |
+|------|------|
+| **核心** | HTML5, CSS3, JavaScript (ES6+) |
+| **样式** | CSS 变量，Flexbox, Grid |
+| **Markdown** | [Marked.js](https://marked.js.org/) |
+| **代码高亮** | [Highlight.js](https://highlightjs.org/) |
+| **搜索** | [Fuse.js](https://fusejs.io/) |
+| **CDN** | 七牛云 Staticfile |
+
+**无框架依赖** - 原生 JavaScript 实现，轻量快速
 
 ---
 
-## 📊 功能列表
+## 📊 功能清单
 
-### 页面系统
-- [x] 首页（Hero 区域、文章列表、侧边栏）
-- [x] 文章详情页（Markdown 渲染、代码高亮、目录）
-- [x] 归档页（时间线视图）
-- [x] 分类页（分类卡片）
-- [x] 标签页（标签云）
-- [x] 关于页（个人介绍、技能栈、经历）
-- [x] 搜索页（全文搜索）
-- [x] 404 页面
+### ✅ 已实现
 
-### 主题系统
-- [x] 深色/浅色主题切换
-- [x] 主题偏好保存（LocalStorage）
-- [x] 系统主题自动检测
-- [x] 平滑过渡动画
-
-### 响应式设计
-- [x] 移动端优先
-- [x] 断点：480px, 768px, 1024px, 1440px
-- [x] 移动端导航菜单（汉堡菜单）
-- [x] 触摸友好的交互
-
-### 交互功能
-- [x] 回到顶部按钮
-- [x] 阅读进度条
-- [x] 图片懒加载
-- [x] 代码块复制按钮
-- [x] 平滑滚动
-- [x] 文章目录自动生成
-
-### SEO 优化
-- [x] 语义化 HTML5 标签
-- [x] Meta 标签（description, keywords, OG）
-- [x] sitemap.xml
-- [x] robots.txt
-
-### 性能优化
-- [x] 图片懒加载
-- [x] 关键 CSS 内联
-- [x] 预加载重要资源
-- [x] 减少重绘重排
+| 模块 | 功能 |
+|------|------|
+| **页面系统** | 首页、文章详情、归档、分类、标签、关于、搜索、404 |
+| **主题系统** | 深色/浅色切换、LocalStorage 保存、系统主题检测 |
+| **响应式** | 移动端优先、4 个断点、汉堡菜单 |
+| **交互功能** | 回到顶部、阅读进度、图片懒加载、代码复制、平滑滚动 |
+| **SEO** | 语义化 HTML、Meta 标签、sitemap.xml、robots.txt |
+| **性能** | CDN 加速、CSS 模块化、关键资源预加载 |
 
 ---
 
@@ -280,11 +264,12 @@ MIT License
 
 ## 🙏 致谢
 
-感谢所有开源项目的作者们：
+感谢所有开源项目的作者：
 
-- [Marked.js](https://marked.js.org/)
-- [Highlight.js](https://highlightjs.org/)
-- [Fuse.js](https://fusejs.io/)
+- [Marked.js](https://marked.js.org/) - Markdown 渲染
+- [Highlight.js](https://highlightjs.org/) - 代码高亮
+- [Fuse.js](https://fusejs.io/) - 全文搜索
+- [七牛云](https://www.qiniu.com/) - 国内 CDN 加速
 
 ---
 
@@ -296,4 +281,4 @@ MIT License
 
 ---
 
-*Made with ❤️ by foxerw*
+*Made with ❤️ by foxerw | 用 ❤️ 构建*
