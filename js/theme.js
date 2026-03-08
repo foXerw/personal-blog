@@ -94,14 +94,19 @@ const ThemeManager = {
    * 切换主题
    */
   toggleTheme() {
-    const newTheme = this.currentTheme === this.THEMES.LIGHT 
+    const oldTheme = this.currentTheme;
+    const newTheme = oldTheme === this.THEMES.LIGHT 
       ? this.THEMES.DARK 
       : this.THEMES.LIGHT;
+    
+    console.log('[Theme] Toggling:', oldTheme, '→', newTheme);
     
     this.saveTheme(newTheme);
     this.applyTheme(newTheme);
     
-    console.log('[Theme] Toggled to:', newTheme);
+    // 验证
+    const actualTheme = document.documentElement.getAttribute('data-theme');
+    console.log('[Theme] Applied theme:', actualTheme, '| Saved to localStorage:', this.getSavedTheme());
   },
   
   /**
