@@ -212,23 +212,50 @@ const PostManager = {
    * 更新 Meta 标签
    */
   updateMetaTags(post) {
-    // Description
-    const descEl = document.querySelector('meta[name="description"]');
-    if (descEl) descEl.setAttribute('content', post.excerpt || post.description || '');
+    // 创建或更新 Description
+    let descEl = document.querySelector('meta[name="description"]');
+    if (!descEl) {
+      descEl = document.createElement('meta');
+      descEl.setAttribute('name', 'description');
+      document.head.appendChild(descEl);
+    }
+    descEl.setAttribute('content', post.excerpt || post.description || '');
     
-    // Keywords
-    const keywordsEl = document.querySelector('meta[name="keywords"]');
-    if (keywordsEl) keywordsEl.setAttribute('content', (post.tags || []).join(', '));
+    // 创建或更新 Keywords
+    let keywordsEl = document.querySelector('meta[name="keywords"]');
+    if (!keywordsEl) {
+      keywordsEl = document.createElement('meta');
+      keywordsEl.setAttribute('name', 'keywords');
+      document.head.appendChild(keywordsEl);
+    }
+    keywordsEl.setAttribute('content', (post.tags || []).join(', '));
     
-    // Open Graph
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', post.title);
+    // Open Graph Title
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.setAttribute('content', post.title);
     
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', post.excerpt || '');
+    // Open Graph Description
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (!ogDesc) {
+      ogDesc = document.createElement('meta');
+      ogDesc.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDesc);
+    }
+    ogDesc.setAttribute('content', post.excerpt || '');
     
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute('content', window.location.href);
+    // Open Graph URL
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (!ogUrl) {
+      ogUrl = document.createElement('meta');
+      ogUrl.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrl);
+    }
+    ogUrl.setAttribute('content', window.location.href);
   },
   
   /**
