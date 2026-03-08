@@ -47,6 +47,8 @@
   padding: 0;
   font-size: 1.25rem;
   transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
 }
 
 .theme-toggle:hover {
@@ -61,24 +63,33 @@
   outline-offset: 2px;
 }
 
+/* 图标容器 - 使用绝对定位重叠 */
 .theme-toggle .icon-sun,
 .theme-toggle .icon-moon {
-  display: none;
+  position: absolute;
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
 }
 
-/* 浅色主题显示月亮图标 */
-[data-theme="light"] .theme-toggle .icon-moon {
-  display: block;
+/* 默认状态（浅色主题）：显示月亮图标（点击切换到深色） */
+.theme-toggle .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
-/* 深色主题显示太阳图标 */
+.theme-toggle .icon-sun {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+/* 深色主题：显示太阳图标 */
+[data-theme="dark"] .theme-toggle .icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
 [data-theme="dark"] .theme-toggle .icon-sun {
-  display: block;
-}
-
-/* 自动模式显示自动图标 */
-[data-theme="auto"] .theme-toggle .icon-auto {
-  display: block;
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
 /* ============================================

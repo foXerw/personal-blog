@@ -13,9 +13,11 @@ const ThemeManager = {
   // 可用主题
   THEMES: {
     LIGHT: 'light',
-    DARK: 'dark',
-    AUTO: 'auto'
+    DARK: 'dark'
   },
+  
+  // 当前主题
+  currentTheme: 'light',
   
   /**
    * 初始化主题
@@ -25,13 +27,10 @@ const ThemeManager = {
     const systemTheme = this.getSystemTheme();
     
     // 确定初始主题
-    let initialTheme = savedTheme;
-    if (!initialTheme || initialTheme === this.THEMES.AUTO) {
-      initialTheme = systemTheme;
-    }
+    this.currentTheme = savedTheme || systemTheme;
     
     // 应用主题
-    this.applyTheme(initialTheme);
+    this.applyTheme(this.currentTheme);
     
     // 监听系统主题变化
     this.watchSystemTheme();
@@ -39,7 +38,7 @@ const ThemeManager = {
     // 绑定切换按钮事件
     this.bindToggleEvents();
     
-    console.log('[Theme] Initialized with theme:', initialTheme);
+    console.log('[Theme] Initialized with theme:', this.currentTheme);
   },
   
   /**
@@ -81,18 +80,11 @@ const ThemeManager = {
   applyTheme(theme) {
     const html = document.documentElement;
     
-    // 移除所有主题属性
-    html.removeAttribute('data-theme');
+    // 设置主题属性
+    html.setAttribute('data-theme', theme);
     
-    // 设置新主题
-    if (theme === this.THEMES.AUTO) {
-      const systemTheme = this.getSystemTheme();
-      html.setAttribute('data-theme', systemTheme);
-      html.setAttribute('data-theme-auto', 'true');
-    } else {
-      html.setAttribute('data-theme', theme);
-      html.removeAttribute('data-theme-auto');
-    }
+    // 更新当前主题
+    this.currentTheme = theme;
     
     // 更新切换按钮状态
     this.updateToggleButtons(theme);
@@ -102,20 +94,9 @@ const ThemeManager = {
    * 切换主题
    */
   toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const isAuto = document.documentElement.hasAttribute('data-theme-auto');
-    
-    let newTheme;
-    if (isAuto || !currentTheme) {
-      // 从自动模式切换到深色
-      newTheme = this.THEMES.DARK;
-    } else if (currentTheme === this.THEMES.DARK) {
-      // 从深色切换到浅色
-      newTheme = this.THEMES.LIGHT;
-    } else {
-      // 从浅色切换到深色
-      newTheme = this.THEMES.DARK;
-    }
+    const newTheme = this.currentTheme === this.THEMES.LIGHT 
+      ? this.THEMES.DARK 
+      : this.THEMES.LIGHT;
     
     this.saveTheme(newTheme);
     this.applyTheme(newTheme);
@@ -124,48 +105,16 @@ const ThemeManager = {
   },
   
   /**
-   * 循环切换主题（light -> dark -> auto -> light）
-   */
-  cycleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const isAuto = document.documentElement.hasAttribute('data-theme-auto');
-    
-    let newTheme;
-    if (isAuto || !currentTheme) {
-      newTheme = this.THEMES.LIGHT;
-    } else if (currentTheme === this.THEMES.LIGHT) {
-      newTheme = this.THEMES.DARK;
-    } else {
-      newTheme = this.THEMES.AUTO;
-    }
-    
-    this.saveTheme(newTheme);
-    this.applyTheme(newTheme);
-    
-    console.log('[Theme] Cycled to:', newTheme);
-  },
-  
-  /**
    * 更新切换按钮状态
    */
   updateToggleButtons(theme) {
     const buttons = document.querySelectorAll('.theme-toggle');
+    const isDark = theme === this.THEMES.DARK;
+    
     buttons.forEach(button => {
-      button.setAttribute('aria-label', `切换到${this.getThemeName(theme)}主题`);
-      button.setAttribute('title', `当前：${this.getThemeName(theme)}主题，点击切换`);
+      button.setAttribute('aria-label', isDark ? '切换到浅色主题' : '切换到深色主题');
+      button.setAttribute('title', isDark ? '当前：深色主题，点击切换浅色' : '当前：浅色主题，点击切换深色');
     });
-  },
-  
-  /**
-   * 获取主题名称
-   */
-  getThemeName(theme) {
-    const names = {
-      [this.THEMES.LIGHT]: '浅色',
-      [this.THEMES.DARK]: '深色',
-      [this.THEMES.AUTO]: '自动'
-    };
-    return names[theme] || '未知';
   },
   
   /**
@@ -180,7 +129,8 @@ const ThemeManager = {
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener('change', (e) => {
         const savedTheme = this.getSavedTheme();
-        if (savedTheme === this.THEMES.AUTO) {
+        if (!savedTheme) {
+          // 只有没有保存偏好时才跟随系统
           this.applyTheme(e.matches ? this.THEMES.DARK : this.THEMES.LIGHT);
           console.log('[Theme] System theme changed');
         }
@@ -189,7 +139,7 @@ const ThemeManager = {
       // 旧版浏览器兼容
       mediaQuery.addListener((e) => {
         const savedTheme = this.getSavedTheme();
-        if (savedTheme === this.THEMES.AUTO) {
+        if (!savedTheme) {
           this.applyTheme(e.matches ? this.THEMES.DARK : this.THEMES.LIGHT);
         }
       });
@@ -204,7 +154,8 @@ const ThemeManager = {
       const toggle = e.target.closest('.theme-toggle');
       if (toggle) {
         e.preventDefault();
-        this.cycleTheme();
+        e.stopPropagation();
+        this.toggleTheme();
       }
     });
   }

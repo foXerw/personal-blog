@@ -162,11 +162,11 @@
             
             <!-- 分页 -->
             <nav class="pagination" aria-label="分页导航">
-              <a href="#" class="pagination-link disabled" aria-disabled="true">← 上一页</a>
-              <a href="#" class="pagination-link active" aria-current="page">1</a>
-              <a href="#" class="pagination-link">2</a>
-              <a href="#" class="pagination-link">3</a>
-              <a href="#" class="pagination-link">下一页 →</a>
+              <a href="#" class="pagination-link" rel="prev" aria-label="上一页">← 上一页</a>
+              <a href="#" class="pagination-link active" data-page="1" aria-current="page">1</a>
+              <a href="#" class="pagination-link" data-page="2">2</a>
+              <a href="#" class="pagination-link" data-page="3">3</a>
+              <a href="#" class="pagination-link" rel="next" aria-label="下一页">下一页 →</a>
             </nav>
           </section>
         </div>
@@ -269,6 +269,7 @@
   <script src="js/utils.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/navigation.js"></script>
+  <script src="js/pagination.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
