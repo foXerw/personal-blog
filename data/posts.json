@@ -1,22 +1,56 @@
 {
   "posts": [
     {
-      "slug": "hello-world",
-      "title": "你好，世界！我的博客正式上线了",
-      "date": "2024-03-07",
-      "updated": "2024-03-07",
+      "slug": "welcome",
+      "title": "欢迎来到我的博客",
+      "date": "2026-03-07",
+      "updated": "2026-03-07",
       "categories": ["生活"],
-      "tags": ["博客", "生活"],
-      "excerpt": "经过一段时间的筹备，我的个人博客终于上线了！在这里，我想分享一下搭建博客的心路历程，以及未来的规划...",
-      "cover": "images/posts/hello-world.jpg",
+      "tags": ["博客", "随笔"],
+      "excerpt": "这是我的第一篇博客文章，介绍一下这个空间的用途和未来的规划。",
+      "cover": "",
+      "featured": true,
+      "draft": false,
+      "readingTime": 3
+    },
+    {
+      "slug": "minimalism",
+      "title": "极简主义的设计哲学",
+      "date": "2026-03-06",
+      "updated": "2026-03-06",
+      "categories": ["技术", "设计"],
+      "tags": ["设计", "极简主义", "UI/UX"],
+      "excerpt": "探讨如何在设计和生活中实践极简主义，去除冗余，保留本质。",
+      "cover": "",
       "featured": true,
       "draft": false,
       "readingTime": 5
+    },
+    {
+      "slug": "frontend-art",
+      "title": "前端开发的艺术",
+      "date": "2026-03-05",
+      "updated": "2026-03-05",
+      "categories": ["技术"],
+      "tags": ["前端", "JavaScript", "CSS"],
+      "excerpt": "前端不仅仅是实现功能，更是一种表达创意和美感的方式。",
+      "cover": "",
+      "featured": false,
+      "draft": false,
+      "readingTime": 4
     }
   ],
   "categories": [
     {
+      "name": "技术",
+      "count": 2
+    },
+    {
       "name": "生活",
+      "count": 1
+    },
+    {
+      "name": "设计",
       "count": 1
     }
   ],
@@ -26,9 +60,33 @@
       "count": 1
     },
     {
-      "name": "生活",
+      "name": "随笔",
+      "count": 1
+    },
+    {
+      "name": "设计",
+      "count": 1
+    },
+    {
+      "name": "极简主义",
+      "count": 1
+    },
+    {
+      "name": "UI/UX",
+      "count": 1
+    },
+    {
+      "name": "前端",
+      "count": 1
+    },
+    {
+      "name": "JavaScript",
+      "count": 1
+    },
+    {
+      "name": "CSS",
       "count": 1
     }
   ],
-  "generatedAt": "2024-03-07T00:00:00.000Z"
+  "generatedAt": "2026-03-07T00:00:00.000Z"
 }

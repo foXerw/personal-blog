@@ -53,7 +53,6 @@
         <button class="theme-toggle" aria-label="切换主题" title="点击切换主题">
           <span class="icon-sun" aria-hidden="true">☀️</span>
           <span class="icon-moon" aria-hidden="true">🌙</span>
-          <span class="icon-auto" aria-hidden="true">🔄</span>
         </button>
       </nav>
       
@@ -87,85 +86,85 @@
             <h2 class="section-title" style="margin-bottom: var(--spacing-6); font-size: var(--text-2xl);">最新文章</h2>
             
             <div class="articles-list" id="articles-list">
-              <!-- 文章卡片示例 1 -->
+              <!-- 文章卡片 1 -->
               <article class="article-card featured">
                 <div class="article-card-content">
                   <h3 class="article-card-title">
-                    <a href="post.html?slug=hello-world">你好，世界！我的博客正式上线了</a>
+                    <a href="post.html?slug=welcome">欢迎来到我的博客</a>
                   </h3>
                   <div class="article-card-meta">
-                    <time datetime="2024-03-07">2024 年 3 月 7 日</time>
+                    <time datetime="2026-03-07">2026 年 3 月 7 日</time>
+                    <span>·</span>
+                    <span>3 分钟阅读</span>
+                  </div>
+                  <p class="article-card-excerpt">
+                    这是我的第一篇博客文章，介绍一下这个空间的用途和未来的规划。
+                  </p>
+                  <div class="article-card-footer">
+                    <div class="article-card-tags">
+                      <a href="tags.html?tag=博客" class="tag">博客</a>
+                      <a href="tags.html?tag=随笔" class="tag">随笔</a>
+                    </div>
+                    <a href="post.html?slug=welcome" class="tag" style="background: transparent; border: 1px solid var(--color-accent);">阅读全文 →</a>
+                  </div>
+                </div>
+              </article>
+              
+              <!-- 文章卡片 2 -->
+              <article class="article-card featured">
+                <div class="article-card-content">
+                  <h3 class="article-card-title">
+                    <a href="post.html?slug=minimalism">极简主义的设计哲学</a>
+                  </h3>
+                  <div class="article-card-meta">
+                    <time datetime="2026-03-06">2026 年 3 月 6 日</time>
                     <span>·</span>
                     <span>5 分钟阅读</span>
                   </div>
                   <p class="article-card-excerpt">
-                    经过一段时间的筹备，我的个人博客终于上线了！在这里，我想分享一下搭建博客的心路历程，以及未来的规划...
+                    探讨如何在设计和生活中实践极简主义，去除冗余，保留本质。
                   </p>
                   <div class="article-card-footer">
                     <div class="article-card-tags">
-                      <a href="tags.html?tag=生活" class="tag">生活</a>
-                      <a href="tags.html?tag=博客" class="tag">博客</a>
+                      <a href="tags.html?tag=设计" class="tag">设计</a>
+                      <a href="tags.html?tag=极简主义" class="tag">极简主义</a>
+                      <a href="tags.html?tag=UI/UX" class="tag">UI/UX</a>
                     </div>
-                    <a href="post.html?slug=hello-world" class="tag" style="background: transparent; border: 1px solid var(--color-accent);">阅读全文 →</a>
+                    <a href="post.html?slug=minimalism" class="tag" style="background: transparent; border: 1px solid var(--color-accent);">阅读全文 →</a>
                   </div>
                 </div>
               </article>
               
-              <!-- 文章卡片示例 2 -->
+              <!-- 文章卡片 3 -->
               <article class="article-card">
                 <div class="article-card-content">
                   <h3 class="article-card-title">
-                    <a href="post.html?slug=css-variables-guide">CSS 变量完全指南：构建灵活的设计系统</a>
+                    <a href="post.html?slug=frontend-art">前端开发的艺术</a>
                   </h3>
                   <div class="article-card-meta">
-                    <time datetime="2024-03-06">2024 年 3 月 6 日</time>
+                    <time datetime="2026-03-05">2026 年 3 月 5 日</time>
                     <span>·</span>
-                    <span>8 分钟阅读</span>
+                    <span>4 分钟阅读</span>
                   </div>
                   <p class="article-card-excerpt">
-                    CSS 变量（自定义属性）是现代 CSS 开发中的强大工具。本文将深入探讨如何使用 CSS 变量构建灵活、可维护的设计系统...
+                    前端不仅仅是实现功能，更是一种表达创意和美感的方式。
                   </p>
                   <div class="article-card-footer">
                     <div class="article-card-tags">
-                      <a href="tags.html?tag=CSS" class="tag">CSS</a>
                       <a href="tags.html?tag=前端" class="tag">前端</a>
-                    </div>
-                    <a href="post.html?slug=css-variables-guide" class="tag" style="background: transparent; border: 1px solid var(--color-accent);">阅读全文 →</a>
-                  </div>
-                </div>
-              </article>
-              
-              <!-- 文章卡片示例 3 -->
-              <article class="article-card">
-                <div class="article-card-content">
-                  <h3 class="article-card-title">
-                    <a href="post.html?slug=javascript-async-await">深入理解 JavaScript Async/Await</a>
-                  </h3>
-                  <div class="article-card-meta">
-                    <time datetime="2024-03-05">2024 年 3 月 5 日</time>
-                    <span>·</span>
-                    <span>10 分钟阅读</span>
-                  </div>
-                  <p class="article-card-excerpt">
-                    Async/Await 让异步代码看起来像同步代码一样简洁。但你是否真正理解它的工作原理？让我们深入探索...
-                  </p>
-                  <div class="article-card-footer">
-                    <div class="article-card-tags">
                       <a href="tags.html?tag=JavaScript" class="tag">JavaScript</a>
-                      <a href="tags.html?tag=异步" class="tag">异步</a>
+                      <a href="tags.html?tag=CSS" class="tag">CSS</a>
                     </div>
-                    <a href="post.html?slug=javascript-async-await" class="tag" style="background: transparent; border: 1px solid var(--color-accent);">阅读全文 →</a>
+                    <a href="post.html?slug=frontend-art" class="tag" style="background: transparent; border: 1px solid var(--color-accent);">阅读全文 →</a>
                   </div>
                 </div>
               </article>
             </div>
             
-            <!-- 分页 -->
-            <nav class="pagination" aria-label="分页导航">
+            <!-- 分页 - 只有一页时隐藏 -->
+            <nav class="pagination" aria-label="分页导航" style="display: none;">
               <a href="#" class="pagination-link" rel="prev" aria-label="上一页">← 上一页</a>
               <a href="#" class="pagination-link active" data-page="1" aria-current="page">1</a>
-              <a href="#" class="pagination-link" data-page="2">2</a>
-              <a href="#" class="pagination-link" data-page="3">3</a>
               <a href="#" class="pagination-link" rel="next" aria-label="下一页">下一页 →</a>
             </nav>
           </section>
@@ -188,15 +187,15 @@
             <ul style="font-size: var(--text-sm);">
               <li style="margin-bottom: var(--spacing-2); display: flex; justify-content: space-between;">
                 <a href="categories.html?category=技术" style="color: var(--color-text-secondary);">技术</a>
-                <span style="color: var(--color-text-muted);">12</span>
+                <span style="color: var(--color-text-muted);">2</span>
               </li>
               <li style="margin-bottom: var(--spacing-2); display: flex; justify-content: space-between;">
                 <a href="categories.html?category=生活" style="color: var(--color-text-secondary);">生活</a>
-                <span style="color: var(--color-text-muted);">8</span>
+                <span style="color: var(--color-text-muted);">1</span>
               </li>
               <li style="margin-bottom: var(--spacing-2); display: flex; justify-content: space-between;">
-                <a href="categories.html?category=随笔" style="color: var(--color-text-secondary);">随笔</a>
-                <span style="color: var(--color-text-muted);">5</span>
+                <a href="categories.html?category=设计" style="color: var(--color-text-secondary);">设计</a>
+                <span style="color: var(--color-text-muted);">1</span>
               </li>
             </ul>
           </div>
@@ -205,13 +204,14 @@
           <div class="sidebar-section">
             <h3 class="sidebar-title">标签云</h3>
             <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-2);">
+              <a href="tags.html?tag=博客" class="tag">博客</a>
+              <a href="tags.html?tag=随笔" class="tag">随笔</a>
+              <a href="tags.html?tag=设计" class="tag">设计</a>
+              <a href="tags.html?tag=极简主义" class="tag">极简主义</a>
+              <a href="tags.html?tag=UI/UX" class="tag">UI/UX</a>
+              <a href="tags.html?tag=前端" class="tag">前端</a>
               <a href="tags.html?tag=JavaScript" class="tag">JavaScript</a>
               <a href="tags.html?tag=CSS" class="tag">CSS</a>
-              <a href="tags.html?tag=前端" class="tag">前端</a>
-              <a href="tags.html?tag=React" class="tag">React</a>
-              <a href="tags.html?tag=Node.js" class="tag">Node.js</a>
-              <a href="tags.html?tag=生活" class="tag">生活</a>
-              <a href="tags.html?tag=随笔" class="tag">随笔</a>
             </div>
           </div>
           

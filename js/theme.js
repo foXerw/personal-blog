@@ -17,7 +17,7 @@ const ThemeManager = {
   },
   
   // 当前主题
-  currentTheme: 'light',
+  currentTheme: null,
   
   /**
    * 初始化主题
