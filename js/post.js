@@ -116,6 +116,9 @@ const PostManager = {
       return `<p>${markdown.replace(/\n/g, '<br>')}</p>`;
     }
     
+    // 移除 front matter (YAML 元数据)
+    const content = this.removeFrontMatter(markdown);
+    
     // 配置 marked
     marked.setOptions({
       breaks: true,
@@ -134,7 +137,16 @@ const PostManager = {
       }
     });
     
-    return marked.parse(markdown);
+    return marked.parse(content);
+  },
+  
+  /**
+   * 移除 Markdown 的 front matter
+   */
+  removeFrontMatter(markdown) {
+    // Front matter 以 --- 开头和结尾
+    const frontMatterRegex = /^---\n[\s\S]*?\n---\n/;
+    return markdown.replace(frontMatterRegex, '');
   },
   
   /**
