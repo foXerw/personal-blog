@@ -23,3 +23,11 @@ build/
 # 临时文件
 tmp/
 temp/
+
+# Astro
+.astro/
+dist/
+# Pagefind 索引
+public/pagefind/
+# 依赖锁（保留 package-lock.json，忽略其他）
+.pnp.*

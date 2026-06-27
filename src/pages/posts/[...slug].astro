@@ -1,0 +1,55 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Toc from '../../components/Toc.tsx';
+import BackToTop from '../../components/BackToTop.tsx';
+import ReadingProgress from '../../components/ReadingProgress.tsx';
+import CodeCopy from '../../components/CodeCopy.tsx';
+import Comments from '../../components/Comments.tsx';
+import { getCollection } from 'astro:content';
+import { formatDate, readingTime } from '../../lib/utils';
+
+export const getStaticPaths = (async () => {
+  const posts = (await getCollection('posts', p => !p.data.draft))
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  return posts.map((post, i) => ({
+    params: { slug: post.slug },
+    props: { post, prev: posts[i + 1], next: posts[i - 1] },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post, prev, next } = Astro.props;
+const { Content, headings } = await post.render();
+const base = import.meta.env.BASE_URL;
+---
+<Base title={post.data.title} description={post.data.excerpt} article>
+  <ReadingProgress client:load />
+  <article>
+    <header class="mb-6">
+      <h1 class="mb-2 text-3xl font-bold">{post.data.title}</h1>
+      <p class="text-sm" style="color: var(--color-text-soft);">
+        {formatDate(post.data.date)} · {readingTime(post.body)} 分钟阅读
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {post.data.tags.map(t => (
+          <a href={`${base}tags/${t}`} class="text-xs no-underline" style="color: var(--color-text-soft);">#{t}</a>
+        ))}
+      </div>
+    </header>
+    {headings.length > 0 && (
+      <aside class="mb-6 rounded-lg border p-4" style="border-color: var(--color-border);">
+        <Toc client:load />
+      </aside>
+    )}
+    <div class="prose prose-lg max-w-none dark:prose-invert" style="color: var(--color-text);">
+      <Content />
+    </div>
+    <CodeCopy client:idle />
+  </article>
+  <nav class="mt-10 flex justify-between border-t pt-4" style="border-color: var(--color-border);">
+    {prev && <a href={`${base}posts/${prev.slug}`}>← {prev.data.title}</a>}
+    {next && <a href={`${base}posts/${next.slug}`}>{next.data.title} →</a>}
+  </nav>
+  <Comments client:visible />
+  <BackToTop client:idle />
+</Base>
