@@ -2,12 +2,10 @@
 title: 极简主义的设计哲学
 date: 2026-03-06
 updated: 2026-03-06
-categories: [技术，设计]
-tags: [设计，极简主义，UI/UX]
-cover: 
-draft: false
+categories: [技术, 设计]
+tags: [设计, 极简主义, UI/UX]
+excerpt: 探讨如何在设计和生活中实践极简主义，去除冗余，保留本质。
 featured: true
-description: 探讨如何在设计和生活中实践极简主义，去除冗余，保留本质。
 ---
 
 ## 少即是多

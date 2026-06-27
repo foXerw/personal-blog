@@ -3,11 +3,8 @@ title: 前端开发的艺术
 date: 2026-03-05
 updated: 2026-03-05
 categories: [技术]
-tags: [前端，JavaScript，CSS]
-cover: 
-draft: false
-featured: false
-description: 前端不仅仅是实现功能，更是一种表达创意和美感的方式。
+tags: [前端, JavaScript, CSS]
+excerpt: 前端不仅仅是实现功能，更是一种表达创意和美感的方式。
 ---
 
 ## 代码也可以很优雅

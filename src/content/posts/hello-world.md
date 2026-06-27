@@ -3,11 +3,9 @@ title: 你好，世界！我的博客正式上线了
 date: 2024-03-07
 updated: 2024-03-07
 categories: [生活]
-tags: [博客，生活]
-cover: images/posts/hello-world.jpg
-draft: false
+tags: [博客, 生活]
+excerpt: 经过一段时间的筹备，我的个人博客终于上线了！在这里分享搭建博客的心路历程和未来规划。
 featured: true
-description: 经过一段时间的筹备，我的个人博客终于上线了！在这里分享搭建博客的心路历程和未来规划。
 ---
 
 经过一段时间的筹备，我的个人博客终于上线了！🎉

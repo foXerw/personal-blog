@@ -3,11 +3,9 @@ title: 欢迎来到我的博客
 date: 2026-03-07
 updated: 2026-03-07
 categories: [生活]
-tags: [博客，随笔]
-cover: 
-draft: false
+tags: [博客, 随笔]
+excerpt: 这是我的第一篇博客文章，介绍一下这个空间的用途和未来的规划。
 featured: true
-description: 这是我的第一篇博客文章，介绍一下这个空间的用途和未来的规划。
 ---
 
 ## 你好，世界！👋
