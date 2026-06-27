@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 
-interface Result { id: string; data: { url: string; meta: { title: string }; excerpt: string }; }
+interface Result {
+  id: string;
+  url: string;
+  meta: { title: string };
+  excerpt: string;
+}
 
 export default function Search() {
   const [q, setQ] = useState('');
@@ -8,7 +13,6 @@ export default function Search() {
   const [pf, setPf] = useState<any>(null);
 
   useEffect(() => {
-    // @ts-ignore Pagefind 由构建期注入，运行时才有
     import(/* @vite-ignore */ `${import.meta.env.BASE_URL}pagefind/pagefind.js`)
       .then((m: any) => { m.init?.(); setPf(m); })
       .catch(() => {});
@@ -18,11 +22,15 @@ export default function Search() {
     if (!pf || !q) { setResults([]); return; }
     let cancelled = false;
     pf.preload(q);
-    pf.search(q).then((res: any) => {
+    pf.search(q).then(async (res: any) => {
       if (cancelled) return;
-      Promise.all(res.results.slice(0, 10).map((r: any) => r.data())).then((data: any[]) => {
-        if (!cancelled) setResults(data);
-      });
+      const data = await Promise.all(
+        res.results.slice(0, 10).map(async (r: any) => {
+          const d = await r.data();
+          return { id: r.id, url: d.url, meta: d.meta, excerpt: d.excerpt };
+        }),
+      );
+      if (!cancelled) setResults(data);
     });
     return () => { cancelled = true; };
   }, [q, pf]);
@@ -40,8 +48,8 @@ export default function Search() {
       <ul className="mt-4 space-y-2">
         {results.map(r => (
           <li key={r.id} className="rounded-md border p-3" style={{ borderColor: 'var(--color-border)' }}>
-            <a href={r.data.url} className="font-semibold no-underline">{r.data.meta.title}</a>
-            <p className="text-sm" style={{ color: 'var(--color-text-soft)' }} dangerouslySetInnerHTML={{ __html: r.data.excerpt }} />
+            <a href={r.url} className="font-semibold no-underline">{r.meta.title}</a>
+            <p className="text-sm" style={{ color: 'var(--color-text-soft)' }} dangerouslySetInnerHTML={{ __html: r.excerpt }} />
           </li>
         ))}
       </ul>
