@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://foxerw.github.io/personal-blog/sitemap-index.xml
