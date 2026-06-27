@@ -2,16 +2,28 @@ export function formatDate(
   input: Date | string,
   locale: 'zh' | 'iso' = 'zh',
 ): string {
-  const d = typeof input === 'string' ? new Date(input) : input;
-  const y = d.getFullYear();
-  const m = d.getMonth() + 1;
-  const day = d.getDate();
-  if (locale === 'iso') {
-    const mm = String(m).padStart(2, '0');
-    const dd = String(day).padStart(2, '0');
-    return `${y}-${mm}-${dd}`;
+  let y: number, m: number, d: number;
+  if (typeof input === 'string') {
+    const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(input);
+    if (match) {
+      y = Number(match[1]);
+      m = Number(match[2]);
+      d = Number(match[3]);
+    } else {
+      const dt = new Date(input);
+      y = dt.getFullYear();
+      m = dt.getMonth() + 1;
+      d = dt.getDate();
+    }
+  } else {
+    y = input.getFullYear();
+    m = input.getMonth() + 1;
+    d = input.getDate();
   }
-  return `${y}年${m}月${day}日`;
+  if (locale === 'iso') {
+    return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  }
+  return `${y}年${m}月${d}日`;
 }
 
 export function readingTime(markdown: string): number {

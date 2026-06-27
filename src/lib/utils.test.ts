@@ -9,7 +9,8 @@ describe('formatDate', () => {
     expect(formatDate('2026-03-07', 'iso')).toBe('2026-03-07');
   });
   it('Date 对象入参', () => {
-    expect(formatDate(new Date('2026-03-07'), 'zh')).toBe('2026年3月7日');
+    // new Date(year, monthIndex, day) 构造的是本地时间，跨时区无歧义
+    expect(formatDate(new Date(2026, 2, 7), 'zh')).toBe('2026年3月7日');
   });
 });
 
