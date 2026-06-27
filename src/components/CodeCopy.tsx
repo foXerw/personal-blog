@@ -11,8 +11,12 @@ export default function CodeCopy() {
       btn.style.borderColor = 'var(--color-border)';
       btn.onclick = async () => {
         const code = pre.querySelector('code')?.textContent || '';
-        await navigator.clipboard.writeText(code);
-        btn.textContent = '已复制';
+        try {
+          await navigator.clipboard.writeText(code);
+          btn.textContent = '已复制';
+        } catch {
+          btn.textContent = '复制失败';
+        }
         setTimeout(() => (btn.textContent = '复制'), 1500);
       };
       (pre as HTMLElement).style.position = 'relative';

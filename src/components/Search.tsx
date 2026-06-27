@@ -31,7 +31,7 @@ export default function Search() {
         }),
       );
       if (!cancelled) setResults(data);
-    });
+    }).catch(() => setResults([]));
     return () => { cancelled = true; };
   }, [q, pf]);
 
