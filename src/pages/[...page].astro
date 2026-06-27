@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const all = (await getCollection('posts', p => !p.data.draft))
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  return paginate(all, { pageSize: 10 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const featured = page.currentPage === 1
+  ? (await getCollection('posts', p => p.data.featured && !p.data.draft))
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  : [];
+// page.url.prev / page.url.next 已包含 BASE_URL，直接使用即可
+---
+<Base title="foxerw 的博客">
+  {featured.length > 0 && (
+    <section class="mb-8">
+      <h2 class="mb-4 text-xl font-bold">精选</h2>
+      <div class="grid gap-4">
+        {featured.map(p => <PostCard post={p} />)}
+      </div>
+    </section>
+  )}
+  <section class="grid gap-4">
+    {page.data.map(p => <PostCard post={p} />)}
+  </section>
+  <nav class="mt-8 flex justify-between">
+    {page.url.prev && <a href={page.url.prev}>← 上一页</a>}
+    <span>{page.currentPage} / {page.lastPage}</span>
+    {page.url.next && <a href={page.url.next}>下一页 →</a>}
+  </nav>
+</Base>

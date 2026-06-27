@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 // 项目页用 https://<user>.github.io 且 base='/<repo>'。
 export default defineConfig({
   site: 'https://foxerw.github.io',
-  base: '/personal-blog',
+  base: '/personal-blog/',
   integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
