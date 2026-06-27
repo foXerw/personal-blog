@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../layouts/Base.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getCollection('posts', p => !p.data.draft);
+  const tags = [...new Set(posts.flatMap(p => p.data.tags))];
+  return tags.flatMap(tag => {
+    const filtered = posts
+      .filter(p => p.data.tags.includes(tag))
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+    return paginate(filtered, {
+      params: { tag },
+      props: { tag },
+      pageSize: 10,
+    });
+  });
+}) satisfies GetStaticPaths;
+
+const { page, tag } = Astro.props;
+---
+<Base title={`标签：${tag}`}>
+  <h1 class="mb-6 text-2xl font-bold">#{tag}</h1>
+  <div class="grid gap-4">{page.data.map(p => <PostCard post={p} />)}</div>
+</Base>
