@@ -41,15 +41,15 @@ export default function Search() {
         type="search"
         value={q}
         onChange={e => setQ(e.target.value)}
-        placeholder="搜索文章…"
-        className="w-full rounded-md border px-3 py-2"
-        style={{ borderColor: 'var(--color-border)', background: 'var(--color-bg)', color: 'var(--color-text)' }}
+        placeholder="输入关键词…"
+        className="search-input"
+        autoFocus
       />
-      <ul className="mt-4 space-y-2">
+      <ul className="search-results">
         {results.map(r => (
-          <li key={r.id} className="rounded-md border p-3" style={{ borderColor: 'var(--color-border)' }}>
-            <a href={r.url} className="font-semibold no-underline">{r.meta.title}</a>
-            <p className="text-sm" style={{ color: 'var(--color-text-soft)' }} dangerouslySetInnerHTML={{ __html: r.excerpt }} />
+          <li key={r.id}>
+            <a href={r.url}>{r.meta.title}</a>
+            <p className="excerpt" dangerouslySetInnerHTML={{ __html: r.excerpt }} />
           </li>
         ))}
       </ul>

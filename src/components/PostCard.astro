@@ -4,22 +4,22 @@ import { formatDate, readingTime } from '../lib/utils';
 
 interface Props { post: CollectionEntry<'posts'>; }
 const { post } = Astro.props;
-const { title, date, tags, excerpt } = post.data;
+const { title, date, tags, excerpt, featured } = post.data;
 const base = import.meta.env.BASE_URL;
 ---
-<article class="rounded-lg border p-4 transition hover:shadow-md" style="border-color: var(--color-border);">
-  <h2 class="mb-1 text-lg font-semibold">
-    <a href={`${base}posts/${post.slug}`} class="no-underline" style="color: var(--color-text);">
-      {title}
-    </a>
-  </h2>
-  <p class="mb-2 text-sm" style="color: var(--color-text-soft);">{formatDate(date)} · {readingTime(post.body)} 分钟</p>
-  <p class="mb-2" style="color: var(--color-text-soft);">{excerpt}</p>
-  <div class="flex flex-wrap gap-2">
-    {tags.map(t => (
-      <a href={`${base}tags/${t}`} class="rounded-full border px-2 py-0.5 text-xs no-underline" style="border-color: var(--color-border); color: var(--color-text-soft);">
-        #{t}
-      </a>
-    ))}
+<li class="log-entry">
+  <time class="log-date" datetime={formatDate(date, 'iso')}>{formatDate(date, 'iso')}</time>
+  <div class="log-body">
+    <h2 class="log-title">
+      {featured && <span class="feat">※</span>}
+      <a href={`${base}posts/${post.slug}`}>{title}</a>
+    </h2>
+    <p class="log-excerpt">{excerpt}</p>
+    <p class="log-meta">
+      <span>{readingTime(post.body)} 分钟</span>
+      {tags.map(t => (
+        <a href={`${base}tags/${t}`}>#{t}</a>
+      ))}
+    </p>
   </div>
-</article>
+</li>

@@ -21,7 +21,9 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page, tag } = Astro.props;
 ---
-<Base title={`标签：${tag}`}>
-  <h1 class="mb-6 text-2xl font-bold">#{tag}</h1>
-  <div class="grid gap-4">{page.data.map(p => <PostCard post={p} />)}</div>
+<Base title={`#${tag} · foxerw`}>
+  <h1 class="h1"><span class="hash">#</span>{tag}</h1>
+  <ul class="log">
+    {page.data.map(p => <PostCard post={p} />)}
+  </ul>
 </Base>

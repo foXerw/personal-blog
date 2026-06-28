@@ -19,10 +19,9 @@ export default function ThemeToggle() {
       onClick={toggle}
       aria-label="切换深浅主题"
       title="切换主题"
-      className="rounded-md border px-2 py-1 text-sm"
-      style={{ borderColor: 'var(--color-border)' }}
+      className="theme-toggle"
     >
-      {dark ? '🌙' : '☀️'}
+      {dark ? 'light' : 'dark'}
     </button>
   );
 }

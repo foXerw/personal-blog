@@ -22,15 +22,14 @@ export default function Toc() {
 
   if (items.length === 0) return null;
   return (
-    <nav className="text-sm">
-      <ul className="space-y-1">
+    <nav>
+      <ul>
         {items.map(it => (
-          <li key={it.id} style={{ paddingLeft: it.level === 3 ? '1rem' : 0 }}>
+          <li key={it.id} style={{ paddingLeft: it.level === 3 ? '0.9rem' : 0 }}>
             <a
               href={`#${it.id}`}
               onClick={e => { e.preventDefault(); document.getElementById(it.id)?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="no-underline"
-              style={{ color: active === it.id ? 'var(--color-accent)' : 'var(--color-text-soft)' }}
+              style={{ color: active === it.id ? 'var(--accent)' : undefined }}
             >{it.text}</a>
           </li>
         ))}

@@ -10,7 +10,7 @@ interface Props {
   article?: boolean;
 }
 
-const { title, description = 'foxerw 的个人博客', image, article } = Astro.props;
+const { title, description = 'foxerw 的 field notes —— 技术与生活的随记', image, article } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = image ? new URL(image, Astro.site) : undefined;
 ---
@@ -38,7 +38,7 @@ const ogImage = image ? new URL(image, Astro.site) : undefined;
   </head>
   <body>
     <Header />
-    <main class="mx-auto max-w-3xl px-4 py-8">
+    <main class="wrap" style="padding-top: 3.5rem; padding-bottom: 5rem;">
       <slot />
     </main>
     <Footer />

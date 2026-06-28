@@ -9,16 +9,12 @@ const nav = [
 ];
 const base = import.meta.env.BASE_URL;
 ---
-<header class="sticky top-0 z-50 border-b" style="border-color: var(--color-border); background: var(--color-bg);">
-  <div class="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
-    <a href={base} class="text-lg font-bold no-underline" style="color: var(--color-text);">
-      foxerw 的博客
-    </a>
-    <nav class="flex items-center gap-4">
+<header class="masthead">
+  <div class="masthead-inner">
+    <a href={base} class="wordmark">foxerw<span class="sep">/</span><span class="vol">field-notes</span></a>
+    <nav class="nav">
       {nav.map(item => (
-        <a href={`${base}${item.href.replace(/^\//, '')}`} class="no-underline" style="color: var(--color-text-soft);">
-          {item.name}
-        </a>
+        <a href={`${base}${item.href.replace(/^\//, '')}`}>{item.name}</a>
       ))}
       <ThemeToggle client:load />
     </nav>

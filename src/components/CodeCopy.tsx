@@ -7,8 +7,7 @@ export default function CodeCopy() {
       if (pre.querySelector('button')) return;
       const btn = document.createElement('button');
       btn.textContent = '复制';
-      btn.className = 'absolute right-2 top-2 rounded border px-2 py-0.5 text-xs';
-      btn.style.borderColor = 'var(--color-border)';
+      btn.className = 'code-copy';
       btn.onclick = async () => {
         const code = pre.querySelector('code')?.textContent || '';
         try {

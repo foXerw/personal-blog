@@ -14,19 +14,17 @@ for (const p of posts) {
 }
 const base = import.meta.env.BASE_URL;
 ---
-<Base title="归档">
-  <h1 class="mb-6 text-2xl font-bold">归档</h1>
+<Base title="归档 · foxerw">
+  <h1 class="h1">归档</h1>
   {[...byYear.entries()].map(([year, list]) => (
-    <section class="mb-8">
-      <h2 class="mb-3 text-xl font-semibold">{year}</h2>
-      <ul class="space-y-2">
-        {list.map(p => (
-          <li class="flex justify-between">
-            <a href={`${base}posts/${p.slug}`} class="no-underline" style="color: var(--color-text);">{p.data.title}</a>
-            <span class="text-sm" style="color: var(--color-text-soft);">{formatDate(p.data.date, 'iso')}</span>
-          </li>
-        ))}
-      </ul>
+    <section>
+      <h2 class="year-head">{year}</h2>
+      {list.map(p => (
+        <div class="archive-row">
+          <span class="d">{formatDate(p.data.date, 'iso')}</span>
+          <a href={`${base}posts/${p.slug}`}>{p.data.title}</a>
+        </div>
+      ))}
     </section>
   ))}
 </Base>
