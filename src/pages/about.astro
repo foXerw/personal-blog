@@ -7,8 +7,17 @@ import Base from '../layouts/Base.astro';
     <p>我是 foxerw，一名热爱技术的开发者。在这里记录技术学习、生活感悟与项目分享——相信分享让知识更有价值。</p>
     <ul>
       <li>GitHub：<a href="https://github.com/foxerw" target="_blank" rel="noopener">@foxerw</a></li>
-      <li>Email：<a href="mailto:fox289042708@gmail.com">fox289042708@gmail.com</a></li>
+      <li>Email：<a class="mail" data-u="807240982xof" data-d="moc.liamg" href="#">需启用 JavaScript 显示</a></li>
     </ul>
     <p>这个站点是一份手写的 field notes：衬线正文，等宽元数据，没有多余的装饰。如果你也喜欢把事情做得克制一点，我们会聊得来。</p>
   </div>
+  <script is:inline>
+    // 邮箱防爬：原始 HTML 里只有倒序的两半，这里还原成可点击 mailto
+    document.querySelectorAll('a.mail').forEach(a => {
+      const u = a.dataset.u.split('').reverse().join('');
+      const d = a.dataset.d.split('').reverse().join('');
+      a.textContent = u + '@' + d;
+      a.href = 'mailto:' + u + '@' + d;
+    });
+  </script>
 </Base>
